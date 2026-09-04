@@ -1,0 +1,89 @@
+{%- doc -%}
+  Intended for use in a block similar to the button block.
+
+  @param {string} link - link to render
+  @param {object} [block] - The block
+
+  @example
+  {% render 'button', link: '/collections/all' %}
+{%- enddoc -%}
+
+{% assign block_settings = block.settings %}
+
+{%- liquid
+  assign raw_style = block_settings.style_class | default: 'button'
+
+  comment
+    Map admin style_class to actual CSS class(es).
+    link-small  → "link link--small"  (inherits all .link rules + size modifier)
+    link-inline → "link--inline"      (separate inline-text variant)
+    All others  → use value as-is.
+  endcomment
+  if raw_style == 'link-small'
+    assign css_class = 'link link--small'
+  elsif raw_style == 'link-inline'
+    assign css_class = 'link--inline'
+  else
+    assign css_class = raw_style
+  endif
+
+  comment
+    Default arrow logic per style:
+    link / link-small → right arrow
+    link-inline       → external arrow (only when explicitly set; none by default)
+    buttons           → none
+  endcomment
+  assign arrow_style = block_settings.arrow_style | default: 'default'
+  if arrow_style == 'default'
+    if raw_style == 'link' or raw_style == 'link-small'
+      assign arrow_style = 'right'
+    else
+      assign arrow_style = 'none'
+    endif
+  endif
+-%}
+
+<a
+  {% if link == blank %}
+    role="link"
+    aria-disabled="true"
+  {% else %}
+    href="{{ link }}"
+  {% endif %}
+  class="
+    size-style
+    {{ css_class }}
+    {{ raw_style }}--{{ block.id }}
+    {% if arrow_style != 'none' %}has-arrow has-arrow--{{ arrow_style }}{% endif %}
+  "
+  style="
+    {% render 'size-style', settings: block_settings %}
+    {%- if block_settings.custom_color != blank %} --custom-color: {{ block_settings.custom_color }};{% endif -%}
+    {%- if block_settings.custom_hover_color != blank %} --custom-hover-color: {{ block_settings.custom_hover_color }};{% endif -%}
+  "
+  {%- if block_settings.open_in_new_tab -%}
+    target="_blank"
+    rel="noopener noreferrer"
+  {%- endif -%}
+  {{ block.shopify_attributes }}
+>
+  <span class="button__label">{{ block_settings.label }}</span>
+  {%- case arrow_style -%}
+    {%- when 'right' -%}
+      <svg class="link__arrow link__arrow--right" aria-hidden="true" focusable="false" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.4805 4.93328L9.65315 1.33276L11.2884 0L16 6L11.2884 12L9.65315 10.6672L12.4805 7.06672H0V4.93328H12.4805Z" fill="currentColor"></path>
+      </svg>
+    {%- when 'external' -%}
+      <svg class="link__arrow link__arrow--external" aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 1h10v10h-2V4.41L1.71 13.71.29 12.29 9.59 3H3V1z" fill="currentColor"></path>
+      </svg>
+    {%- when 'down' -%}
+      <svg class="link__arrow link__arrow--down" aria-hidden="true" focusable="false" width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.93328 12.4805L1.33276 9.65315L0 11.2884L6 16L12 11.2884L10.6672 9.65315L7.06672 12.4805V0H4.93328V12.4805Z" fill="currentColor"></path>
+      </svg>
+    {%- when 'up' -%}
+      <svg class="link__arrow link__arrow--up" aria-hidden="true" focusable="false" width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.93328 3.51953L1.33276 6.34685L0 4.71158L6 0L12 4.71158L10.6672 6.34685L7.06672 3.51953V16H4.93328V3.51953Z" fill="currentColor"></path>
+      </svg>
+  {%- endcase -%}
+</a>

@@ -1,0 +1,129 @@
+{% if product.metafields.custom.vendor_stories != blank %}
+
+<div class="shopify-section section-wrapper">
+  <div class="section-background color-scheme-1"></div>
+  <div class="section section--page-width color-scheme-1" style="
+    --section-min-height: var(--section-height-small);
+    --section-preview-height: 600px;
+    ">
+    <div class="custom-section-background">
+    </div>
+    <div class="border-style custom-section-content" style="--border-width: 1px; --border-style: none; --border-color:
+      rgb(var(--color-border-rgb) / 1.0); --border-radius:
+      0px; 
+      ">
+      <div class="
+        spacing-style
+        layout-panel-flex
+        layout-panel-flex--row
+        section-content-wrapper
+        mobile-column
+        " style="
+        --flex-direction: row; --flex-wrap: nowrap;
+        --gap: 0px;
+        --horizontal-alignment: flex-start; --vertical-alignment: center;
+        --vertical-alignment-mobile: center;
+        --padding-block-start: 0px;--padding-block-end: 0px;
+        " data-testid="section-content">
+        <div class="
+          group-block
+          group-block--height-fill
+          group-block--width-custom
+          border-style
+          spacing-style
+          size-style
+          " style="
+          --border-width: 1px; --border-style: none; --border-color:
+          rgb(var(--color-border-rgb) / 1.0); --border-radius:
+          0px; 
+          --padding-block-start: max(20px, calc(var(--spacing-scale) * 32px));--padding-block-end: max(20px, calc(var(--spacing-scale) * 32px));--padding-inline-start: max(20px, calc(var(--spacing-scale) * 32px));--padding-inline-end: max(20px, calc(var(--spacing-scale) * 32px));
+          --size-style-width:100%;--size-style-height: 100%;--size-style-width-mobile: 100%; --size-style-width-mobile-min: 5rem;
+          " data-testid="group-block">
+          <div class="group-block__media-wrapper">
+            <div class="overlay overlay--solid" style="
+              --overlay-layer: 0;
+              --overlay-color: {{ product.metafields.custom.vendor_stories.value.text_background_color }};
+              --overlay-color--end: rgba(43, 161, 108, 0);
+              --overlay-direction: to top; --overlay-border-radius: 0px;"></div>
+          </div>
+          <div class="
+            group-block-content
+            layout-panel-flex
+            layout-panel-flex--column
+            mobile-column
+            " style="--flex-direction: column; --flex-wrap: nowrap;
+            --gap: 12px;
+            --horizontal-alignment: flex-start; --vertical-alignment: center;
+            --vertical-alignment-mobile: center;
+            ">
+            <div class=" spacing-style text-block text-block--AOVphbWl6S0FSZU1uQ__text_dEX7Je h3
+              text-block--align-left text-block--full-width 
+              " style="
+              --padding-block-start: 0px; --padding-block-end:16px; 
+              --padding-inline-start:0px; --padding-inline-end:0px; 
+              --color: {{ product.metafields.custom.vendor_stories.value.text_color }};
+              --width: 100%;
+              --max-width: var(--max-width--body-none);
+              --text-align: left;
+              ">
+              <h2>{{ product.metafields.custom.vendor_stories.value.heading }}</h2>
+            </div>
+            <div class=" spacing-style text-block text-block--ANVRSSVhDbUFvR3c0b__text_Dk4UfG custom
+              text-block--align-left text-block--full-width  custom-typography  custom-font-size  custom-color 
+              " style="
+              --padding-block-start: 0px;
+              --padding-block-end:0px; 
+              --padding-inline-start:0px;
+              --padding-inline-end:0px; 
+              --color: {{ product.metafields.custom.vendor_stories.value.text_color }};
+              --font-size: 1rem;
+              --font-weight: var(--font-body--weight);
+              --font-family: var(--font-body--family);
+              --text-transform: none;
+              --text-wrap: pretty;
+              --line-height: var(--line-height--body-normal);
+              --letter-spacing: var(--letter-spacing--body-normal);
+              --width: 100%;
+              --max-width: var(--max-width--body-none);
+              --text-align: left;
+              ">
+              <p>{{ product.metafields.custom.vendor_stories.value.description | newline_to_br }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="
+          image-block image-block--AZVRTYmwzdENKUnVva__image_Ez4Fbh image-block--height-fill spacing-style size-style
+          " style="
+          --ratio: 16 / 9;
+          --size-style-width: 100%;--size-style-height: 100%;--size-style-width-mobile: 100%; --size-style-width-mobile-min: 5rem;
+          --padding-block-start: 0px;--padding-block-end: 0px;--padding-inline-start: 0px;--padding-inline-end: 0px;
+          ">
+          <img src="{{ product.metafields.custom.vendor_stories.value.image | image_url: width: 1000 }}" alt="{{ product.metafields.custom.vendor_stories.value.image.value.alt }}" width="1000" height="1000" class="image-block__image border-style" style="
+            --ratio: 16 / 9;
+            --border-width: 1px; --border-style: none; --border-color:
+            rgb(var(--color-border-rgb) / 1.0); --border-radius:
+            0px; 
+            " sizes="auto, (min-width: 750px) 100vw, 100vw">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+{% schema %}
+{
+  "name": "Vendor stories",
+  "blocks": [
+  ],
+  "settings": [
+  ],
+  "presets": [
+    {
+      "name": "Vendor stories",
+      "category": "Storytelling"
+    }
+  ]
+}
+{% endschema %}
