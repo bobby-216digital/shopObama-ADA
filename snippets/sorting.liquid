@@ -106,7 +106,6 @@
       <floating-panel-component
         id="sorting-options-{{ section_id }}"
         class="sorting-filter__options color-{{ settings.popover_color_scheme }}"
-        role="listbox"
         aria-labelledby="sort-label-{{ section_id }}"
         ref="listbox"
       >
@@ -116,7 +115,6 @@
           >
             <div
               class="sorting-filter__option"
-              role="option"
               aria-selected="{% if option.value == sort_by %}true{% else %}false{% endif %}"
               tabindex="{% if option.value == sort_by %}0{% else %}-1{% endif %}"
             >
