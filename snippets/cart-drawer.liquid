@@ -21,11 +21,22 @@
     auto-open
   {% endif %}
 >
+  {% liquid
+    assign cart_count_id = 'CartBubbleCount-' | append: section.id
+    assign cart_open_label_id = 'CartOpenLabel-' | append: section.id
+  %}
   <button
     class="button header-actions__action button-unstyled"
     on:click="/open"
+    aria-labelledby="{{ cart_open_label_id }} {{ cart_count_id }}"
   >
-    {% render 'cart-icon-component' %}
+    <span
+      id="{{ cart_open_label_id }}"
+      class="visually-hidden"
+    >
+      {{- 'accessibility.open_cart_drawer' | t }} {{ 'accessibility.cart_count' | t }}:
+    </span>
+    {% render 'cart-icon-component', count_id: cart_count_id %}
   </button>
 
   <dialog

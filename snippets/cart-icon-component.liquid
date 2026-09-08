@@ -1,5 +1,8 @@
 {%- doc -%}
   Renders the cart icon, which displays the number of items in the cart via a bubble.
+
+  @param [count_id] - {string} optional id passed through to the 'cart-bubble' snippet, applied to the live
+  item-count text node so an ancestor control can reference it via aria-labelledby.
 {%- enddoc -%}
 <cart-icon
   class="
@@ -15,7 +18,7 @@
     {{ 'icon-cart.svg' | inline_asset_content }}
   </span>
 
-  {% render 'cart-bubble', limit: 100, live_region: true, test_id: test_id %}
+  {% render 'cart-bubble', limit: 100, live_region: true, test_id: test_id, count_id: count_id %}
 </cart-icon>
 
 {% stylesheet %}
