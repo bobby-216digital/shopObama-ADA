@@ -84,7 +84,6 @@
     >
       <summary
         class="facets__summary"
-        aria-expanded="false"
         aria-controls="sorting-options-{{ section_id }}"
         ref="summary"
       >
@@ -106,7 +105,6 @@
       <floating-panel-component
         id="sorting-options-{{ section_id }}"
         class="sorting-filter__options color-{{ settings.popover_color_scheme }}"
-        aria-labelledby="sort-label-{{ section_id }}"
         ref="listbox"
       >
         {% for option in results.sort_options %}
