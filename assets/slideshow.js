@@ -163,6 +163,7 @@ export class Slideshow extends Component {
       if (slide.hasAttribute('reveal')) {
         slide.removeAttribute('reveal');
         slide.setAttribute('aria-hidden', 'true');
+        slide.inert = true;
       }
     }
 
@@ -179,6 +180,7 @@ export class Slideshow extends Component {
         if (requestedSlide.hasAttribute('hidden')) {
           requestedSlide.setAttribute('reveal', '');
           requestedSlide.setAttribute('aria-hidden', 'false');
+          requestedSlide.inert = false;
         }
 
         return this.slides.indexOf(requestedSlide);
@@ -251,6 +253,7 @@ export class Slideshow extends Component {
     const previousIndex = this.current;
 
     slide.setAttribute('aria-hidden', 'false');
+    slide.inert = false;
     this.#scroll.to(slide, { instant });
     this.current = this.slides?.indexOf(slide) || 0;
 
@@ -738,6 +741,7 @@ export class Slideshow extends Component {
       slides.forEach((slide) => {
         const isVisible = visibleSlides.includes(slide);
         slide.setAttribute('aria-hidden', `${!isVisible}`);
+        slide.inert = !isVisible;
       });
     });
 
