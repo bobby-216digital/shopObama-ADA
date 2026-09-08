@@ -2053,7 +2053,7 @@ zoom-dialog dialog {
     aspect-ratio: var(--aspect-ratio);
   }
 
-  &:is([aria-selected='true']) {
+  &:is([aria-current='true']) {
     outline: var(--focus-outline-width) solid currentcolor;
     outline-offset: calc(var(--focus-outline-offset) / 2);
     border: var(--style-border-width) solid rgb(var(--color-border-rgb) / var(--media-border-opacity));
@@ -3837,7 +3837,7 @@ slideshow-component[autoplay] slideshow-controls {
       border-radius: calc(var(--size) / 2);
 
       @supports not (view-timeline-axis: inline) {
-        &[aria-selected='true'] {
+        &[aria-current='true'] {
           --color: var(--color-active);
         }
       }
@@ -3847,7 +3847,7 @@ slideshow-component[autoplay] slideshow-controls {
       }
     }
 
-    &[aria-selected='true'] {
+    &[aria-current='true'] {
       --color: var(--color-active);
     }
   }
@@ -3951,7 +3951,7 @@ slideshow-component[autoplay] slideshow-controls {
       border-radius: var(--media-radius);
     }
 
-    &:is([aria-selected='true']) {
+    &:is([aria-current='true']) {
       outline: var(--focus-outline-width) solid currentcolor;
       outline-offset: calc(var(--focus-outline-offset) / 2);
       border: var(--style-border-width) solid rgb(var(--color-border-rgb) / var(--media-border-opacity));

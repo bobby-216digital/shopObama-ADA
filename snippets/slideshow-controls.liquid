@@ -103,13 +103,14 @@
         <div class="slideshow-controls__thumbnails">
           {% for media in thumbnails %}
             <button
+              type="button"
               class="slideshow-control button button-unstyled slideshow-controls__thumbnail"
               aria-label="{{ 'accessibility.slide_status' | t: index: forloop.index, length: forloop.length }}"
               on:click="/select/{{ forloop.index0 }}"
               style="--aspect-ratio: {% if aspect_ratio == 'adapt' %}{{ media.preview_image.aspect_ratio | default: 1.0 }}{% else %}{{ aspect_ratio }}{% endif %};"
               ref="thumbnails[]"
               {% if forloop.first %}
-                aria-selected="true"
+                aria-current="true"
               {% endif %}
             >
               {{ media.preview_image | image_url: width: 144 | image_tag: loading: 'lazy', alt: media.alt | escape }}
@@ -145,13 +146,14 @@
         {% for i in (1..item_count) %}
           <li>
             <button
+              type="button"
               class="slideshow-control button button-unstyled"
               style="animation-timeline: --slide-{{ forloop.index }}"
               aria-label="{{ 'accessibility.slide_status' | t: index: forloop.index, length: forloop.length }}"
               on:click="/select/{{ forloop.index0 }}"
               ref="dots[]"
               {% if forloop.first %}
-                aria-selected="true"
+                aria-current="true"
               {% endif %}
             >
               {{ forloop.index }}

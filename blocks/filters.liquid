@@ -132,6 +132,7 @@
     <div
       class="facets facets--{{ block_settings.filter_style }} spacing-style"
       style="{% render 'spacing-style', settings: block_settings %}{% if block_settings.text_label_case == 'uppercase' %} --facet-label-transform: uppercase;{% endif %}"
+      role="group"
       aria-label="{{ 'accessibility.filters' | t }}"
     >
       <facets-form-component
