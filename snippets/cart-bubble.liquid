@@ -25,17 +25,12 @@
       role="status"
     {% endif %}
   >
-    <span class="visually-hidden">
-      {{- 'accessibility.cart_count' | t -}}
-      : {{ cart.item_count }}
-    </span>
     <span
       {% if count_id != blank %}
         id="{{ count_id }}"
       {% endif %}
       class="cart-bubble__text-count{% if cart == empty %} hidden{% endif %}"
       ref="cartBubbleCount"
-      aria-hidden="true"
       data-testid="cart-bubble"
     >
       {%- if limit == blank or cart.item_count < limit %}

@@ -65,5 +65,14 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+
+    <script>
+    function keyToClick(event) {
+        if (event.key == "Enter") {
+            event.preventDefault();
+            event.target.click();
+        }
+    }
+    </script>
   </body>
 </html>

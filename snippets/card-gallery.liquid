@@ -199,7 +199,7 @@
       class="contents"
       ref="cardGalleryLink"
       href="{% render 'product-card-variant-url', product: product %}"
-      aria-label="{{- product.title -}}"
+      aria-label="{{ product.title | escape }}"
     >
       {% render 'slideshow',
         ref: 'slideshow',
@@ -217,7 +217,7 @@
         ref="productTitleLink"
         href="{% render 'product-card-variant-url', product: product %}"
       >
-        <span class="title-text">{{- product.title -}}</span>
+        <span class="title-text">{{ product.title | escape }}</span>
       </a>
     </product-title>
   {% elsif product == blank %}
